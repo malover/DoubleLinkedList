@@ -36,7 +36,7 @@
             }
         }
 
-        public void AddLast(T node)
+        public void AddLast(T value)
         {
             Node<T> node = new Node<T>(value);
             if (Head == null)
