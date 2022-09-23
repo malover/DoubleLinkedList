@@ -16,8 +16,9 @@
             Head = headNode;
         }
 
-        public void AddFirst(Node<T> node)
+        public void AddFirst(T value)
         {
+            Node<T> node = new Node<T>(value);
             if (Head == null)
             {
                 Head = node;
@@ -35,8 +36,9 @@
             }
         }
 
-        public void AddLast(Node<T> node)
+        public void AddLast(T node)
         {
+            Node<T> node = new Node<T>(value);
             if (Head == null)
             {
                 Head = node;
@@ -46,7 +48,7 @@
             else
             {
                 Node<T> currentNode = Head;
-                while(currentNode.Next != null)
+                while (currentNode.Next != null)
                 {
                     currentNode = currentNode.Next;
                 }
@@ -63,7 +65,7 @@
             {
                 return;
             }
-            else if(Length == 1)
+            else if (Length == 1)
             {
                 Head = null;
                 Length--;
@@ -86,15 +88,44 @@
                 Length--;
                 return;
             }
-            
+
             Node<T> currentLast = Head;
-            while(currentLast.Next != null)
+            while (currentLast.Next != null)
             {
                 currentLast = currentLast.Next;
             }
             Node<T> futureLast = currentLast.Previous;
             futureLast.Next = null;
             Length--;
+        }
+
+        public T GetFirst()
+        {
+            if (Length == 0)
+            {
+                return default(T);
+            }
+            else
+            {
+                return Head.Value;
+            }
+        }
+
+        public T GetLast()
+        {
+            if (Length == 0)
+            {
+                return default(T);
+            }
+            else
+            {
+                Node<T> currentLast = Head;
+                while (currentLast.Next != null)
+                {
+                    currentLast = currentLast.Next;
+                }
+                return currentLast.Value;
+            }
         }
     }
 }
