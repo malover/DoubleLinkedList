@@ -59,63 +59,43 @@
             }
         }
 
-        public void DeleteFirst()
-        {
-            if (Length == 0)
-            {
-                return;
-            }
-            else if (Length == 1)
-            {
-                Head = null;
-                Length--;
-                return;
-            }
-            Head = Head.Next;
-            Head.Previous = null;
-            Length--;
-        }
-
-        public void DeleteLast()
-        {
-            if (Length == 0)
-            {
-                return;
-            }
-            else if (Length == 1)
-            {
-                Head = null;
-                Length--;
-                return;
-            }
-
-            Node<T> currentLast = Head;
-            while (currentLast.Next != null)
-            {
-                currentLast = currentLast.Next;
-            }
-            Node<T> futureLast = currentLast.Previous;
-            futureLast.Next = null;
-            Length--;
-        }
-
         public T GetFirst()
         {
+            T valueToReturn = default(T);
             if (Length == 0)
             {
                 return default(T);
             }
+            else if (Length == 1)
+            {
+                valueToReturn = Head.Value;
+                Head = null;
+                Length--;
+                return valueToReturn;
+            }
             else
             {
-                return Head.Value;
+                valueToReturn = Head.Value;
+                Head = Head.Next;
+                Head.Previous = null;
+                Length--;
+                return valueToReturn;
             }
         }
 
         public T GetLast()
         {
+            T valueToReturn = default(T);
             if (Length == 0)
             {
                 return default(T);
+            }
+            else if (Length == 1)
+            {
+                valueToReturn = Head.Value;
+                Head = null;
+                Length--;
+                return valueToReturn;
             }
             else
             {
@@ -124,7 +104,11 @@
                 {
                     currentLast = currentLast.Next;
                 }
-                return currentLast.Value;
+                valueToReturn = currentLast.Value;
+                Node<T> futureLast = currentLast.Previous;
+                futureLast.Next = null;
+                Length--;
+                return valueToReturn;
             }
         }
     }

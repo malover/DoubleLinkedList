@@ -17,7 +17,7 @@
             list.AddLast(student4);
             list.AddFirst(student5);
 
-            Console.WriteLine($"The first value is: {list.GetFirst()}, the last value is: {list.GetLast()}");
+            Console.WriteLine($"The first value is: {list.GetFirst().FirstName}, the last value is: {list.GetLast().FirstName}");
 
             list.DeleteFirst();
             list.DeleteLast();
